@@ -30,7 +30,7 @@ class TaskRepository implements TaskRepositoryInterface
      * @param int $userId The ID of the user whose tasks to retrieve.
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getUserTasks(array $filters = [], int $userId): Collection
+    public function getUserTasks(int $userId, array $filters = []): Collection
     {
         $query = $this->model->where('user_id', $userId);
 

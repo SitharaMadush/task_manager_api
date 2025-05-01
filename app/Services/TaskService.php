@@ -38,10 +38,10 @@ class TaskService implements TaskServiceInterface
      *
      * @throws Exception
      */
-    public function list(array $filters, int $userId): Collection
+    public function list(int $userId, array $filters): Collection
     {
         try{
-            return $this->repository->getUserTasks($filters, $userId);
+            return $this->repository->getUserTasks($userId, $filters);
         }catch (Exception $e) {
             // Log to Laravel log
             ErrorLogger::log('Failed to fetch tasks.', $e);

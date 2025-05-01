@@ -15,7 +15,7 @@ beforeEach(function () {
 it('can list tasks with filters and user ID', function () {
     $mockRepo = Mockery::mock(TaskRepository::class);
 
-    $mockTasks = new EloquentCollection([
+    $mockTasks = EloquentCollection::make([
         new Task(['title' => 'Test 1', 'user_id' => 1]),
         new Task(['title' => 'Test 2', 'user_id' => 1]),
     ]);
@@ -30,8 +30,9 @@ it('can list tasks with filters and user ID', function () {
 
     $service = new TaskService($mockRepo);
 
-    $result = $service->list($filters, $userId);
+    $result = $service->list($userId, $filters);
 
     expect($result)->toHaveCount(2);
     expect($result->first())->toBeInstanceOf(Task::class);
+    expect($result->first()->user_id)->toBe(1);
 });

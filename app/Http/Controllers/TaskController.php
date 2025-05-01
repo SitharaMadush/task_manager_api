@@ -45,7 +45,7 @@ class TaskController extends Controller
         try{
             $userId = Auth::id();
             $filters['status'] = $request->query('status');
-            $tasks = $this->service->list($filters, $userId);
+            $tasks = $this->service->list($userId, $filters);
             return response()->json($tasks);
         }catch (Exception $e) {
             return response()->json(['error' => 'Failed to fetch tasks.'], 500);

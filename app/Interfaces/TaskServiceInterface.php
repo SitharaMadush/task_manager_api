@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 interface TaskServiceInterface
 {
 
-    public function list(array $filters, int $userId): Collection;
+    public function list(int $userId, array $filters): Collection;
     public function create(array $data): Task;
     public function update(int $id, array $data): Task;
     public function delete(int $id): bool;
