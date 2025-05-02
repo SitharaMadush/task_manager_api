@@ -6,7 +6,7 @@ This is a Task Management Front-End (Client) that is built to consume a back end
 - Laravel 12
 - PEST (for writing tests)
 
-## Features
+## 💡 Features
 - Add Task
 - Update Task
 - Mark as completed
