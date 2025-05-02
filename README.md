@@ -1,61 +1,84 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Task Manager Client (Default)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a Task Management Front-End (Client) that is built to consume a back end Rest API.
 
-## About Laravel
+## ✨ Tech Stack Used
+- Laravel 12
+- PEST (for writing tests)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
+- Add Task
+- Update Task
+- Mark as completed
+- Delete Tasks
+- View/ Filter tasks based on status
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 💿 Local Setup Guide
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Clone the repository
 
-## Learning Laravel
+```bash
+git clone https://github.com/SitharaMadush/task_manager_api
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+cd into the project directory
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+cd task_manager_client
+```
+Open the project in your code editor
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Add a create a custom local domain in the hosts file of your operating system in order to .
+eg: 127.0.0.1 dev.laravel.com
 
-## Laravel Sponsors
+Rename .env.example file as .env . 
+Update your Database credentials & APP_URL in .env
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+The built in docker setup can be used to setup the local server environment.
+Please install docker on your computer before proceeding the following steps.
 
-### Premium Partners
+Change the server_name attribute in /docker/app/Dockerfile to match the created local domain
+eg: server_name dev.laravel.com;
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+Build and run the builtin docker environment
+```bash
+docker compose up -d
+```
 
-## Contributing
+Use the folowing command to access php Docker container bash
+```bash
+docker compose exec app -it  bash
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Install php dependencies
+```bash
+composer install
+```
 
-## Code of Conduct
+Generate the app key
+```bash
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Run the migrations
+```bash
+php artisan migrate
+```
 
-## Security Vulnerabilities
+Seed the Database
+```bash
+php artisan db:seed
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+To manage CORS for the desired front end, include your front end url into the 'allowed_origins' array.
+eg: 'allowed_origins' => ['http://172.20.0.2:3000'],
 
-## License
+Additionally, to run the tests
+```php
+php artisan test
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Finally the project is up and running. You can play around with your Task APIs Now...!!!
+
+
+💪 Developed by ~ Sithara Madushan ~ 💪 
