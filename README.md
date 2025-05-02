@@ -86,7 +86,7 @@ php artisan test
 
 Finally the project is up and running. You can play around with your Task APIs Now...!!!
 
-- TEST USERNAME: bob@example.com
+- TEST USERNAMES: bob@example.com, alice@example.com
 - TEST PASSWORD: 'password'
 
 
