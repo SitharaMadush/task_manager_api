@@ -16,7 +16,7 @@ This is a Laravel based Task Management REST API.
 
 ## 💿 Local Setup Guide
 
-1. Clone the repository
+Clone the repository
 
 ```bash
 git clone https://github.com/SitharaMadush/task_manager_api
@@ -34,6 +34,7 @@ eg: 127.0.0.1 dev.laravel.com
 
 Rename .env.example file as .env . 
 Update your Database credentials & APP_URL in .env
+You can find the database credentials in the docker-compose.yml file
 
 The built in docker setup can be used to setup the local server environment.
 Please install docker on your computer before proceeding the following steps.
