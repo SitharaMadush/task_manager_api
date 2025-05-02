@@ -1,4 +1,4 @@
-# Task Manager Client
+# Task Manager API
 
 This is a Task Management Front-End (Client) that is built to consume a back end Rest API.
 
@@ -24,7 +24,7 @@ git clone https://github.com/SitharaMadush/task_manager_api
 cd into the project directory
 
 ```bash
-cd task_manager_client
+cd task_manager_api
 ```
 Open the project in your code editor
 
@@ -58,6 +58,11 @@ composer install
 Generate the app key
 ```bash
 php artisan key:generate
+```
+
+Generate a secure secret key for API Token Generation
+```bash
+php artisan jwt:secret
 ```
 
 Run the migrations
