@@ -85,5 +85,8 @@ php artisan test
 
 Finally the project is up and running. You can play around with your Task APIs Now...!!!
 
+DEMO USERNAME: bob@example.com
+DEMO PASSWORD: 'password'
+
 
 💪 Developed by ~ Sithara Madushan ~ 💪 
