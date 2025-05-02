@@ -1,37 +1,26 @@
 <?php
 
-use App\Models\Task;
-use App\Repositories\TaskRepository;
-use App\Services\TaskService;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+namespace App\Helpers;
 
-beforeEach(function () {
-    // prevent Log::error() from triggering facade
-    Mockery::mock('alias:App\Helpers\ErrorLogger')
-        ->shouldReceive('log')
-        ->andReturnNull();
-});
+use Illuminate\Support\Facades\Log;
+use Throwable;
 
-it('can list tasks with filters and user ID', function () {
-    $mockRepo = Mockery::mock(TaskRepository::class);
-
-    $mockTasks = new EloquentCollection([
-        new Task(['title' => 'Test 1', 'user_id' => 1]),
-        new Task(['title' => 'Test 2', 'user_id' => 1]),
-    ]);
-
-    $filters = ['status' => 'completed'];
-    $userId = 1;
-
-    $mockRepo->shouldReceive('getUserTasks')
-             ->once()
-             ->with($filters, $userId)
-             ->andReturn($mockTasks);
-
-    $service = new TaskService($mockRepo);
-
-    $result = $service->list($filters, $userId);
-
-    expect($result)->toHaveCount(2);
-    expect($result->first())->toBeInstanceOf(Task::class);
-});
+class ErrorLogger
+{
+    /**
+     * Log an exception with detailed data
+     *
+     * @param string $message
+     * @param Throwable $e
+     * @return void
+     */
+    public static function log(string $message, Throwable $e): void
+    {
+        Log::error($message, [
+            'error' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'trace' => collect($e->getTrace())->take(5)->toArray(),
+        ]);
+    }
+}
