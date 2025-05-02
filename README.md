@@ -1,4 +1,4 @@
-# Task Manager Client (Default)
+# Task Manager Client
 
 This is a Task Management Front-End (Client) that is built to consume a back end Rest API.
 
