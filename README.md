@@ -5,7 +5,7 @@ This is a Laravel based Task Management REST API.
 ## ✨ Tech Stack Used
 - Laravel 12
 - MySQL
-- PEST (for writing tests)
+- PEST Testing Framework
 
 ## 💡 Features
 - Add Task
