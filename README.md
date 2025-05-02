@@ -1,6 +1,6 @@
 # Task Manager API
 
-This is a Task Management Front-End (Client) that is built to consume a back end Rest API.
+This is a Laravel based Task Management REST API.
 
 ## ✨ Tech Stack Used
 - Laravel 12
